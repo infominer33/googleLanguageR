@@ -106,7 +106,7 @@ my_config <- list(encoding = "LINEAR16",
                   diarizationConfig = list(
                     enableSpeakerDiarization = TRUE,
                     minSpeakerCount = 2,
-                    maxSpeakCount = 3
+                    maxSpeakerCount = 3
                   ))
 
 # languageCode is required, so will be added if not in your custom config
@@ -116,6 +116,11 @@ gl_speech(my_audio, languageCode = "en-US", customConfig = my_config)
 ## Asynchronous calls
 
 For speech files greater than 60 seconds of if you don't want your results straight away, set `asynch = TRUE` in the call to the API.
+
+For large files, use cloud storage.
+```
+my_audio <- 'gs://bucketname/file.xxx' 
+```
 
 This will return an object of class `"gl_speech_op"` which should be used within the `gl_speech_op()` function to check the status of the task.  If the task is finished, then it will return an object the same form as the non-asynchronous case. 
 
